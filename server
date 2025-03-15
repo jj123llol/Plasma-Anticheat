@@ -12,6 +12,8 @@ local maxJump = 60
 
 local maxSpeed = 18
 
+local tpDist = 10 -- about 100 studs
+
 local playerS = game:GetService("Players")
 
 local rs = game:GetService("RunService")
@@ -27,7 +29,7 @@ local function UpdatePos(plr)
        local char = plr.Character or plr.CharacterAdded:Wait()
        for i, info in pairs(LastPositions) do
           if not info["User"] == plr then continue end
-          if (char:GetPivot().Position - info["CFrame"].Position).Magnitude > 20 then plr:Kick("Teleportation Detected!") end
+          if (char:GetPivot().Position - info["CFrame"].Position).Magnitude > tpDist then plr:Kick("Teleportation Detected!") end
           table.remove(LastPositions, i)
        end
        table.insert(LastPositions, {
