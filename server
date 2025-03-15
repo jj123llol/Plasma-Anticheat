@@ -8,6 +8,8 @@
     All Executors are down, so i cant currently check if i made an error... sooo if it dosent work dont blame me!
 ]]
 
+local maxNum = 60
+
 local playerS = game:GetService("Players")
 
 local rs = game:GetService("RunService")
@@ -40,11 +42,11 @@ rs.Heartbeat:Connect(function()
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 UpdatePos(plr)
                 if not char:FindFirstChild("HumanoidRootPart") then continue end
-                if char:FindFirstChild("HumanoidRootPart").Velocity.Y > 40 then plr:Kick("JumpBoost Detected, Kicked By Plasma AntiCheat!") end
+                if char:FindFirstChild("HumanoidRootPart").Velocity.Y > maxNum then plr:Kick("JumpBoost Detected, Kicked By Plasma AntiCheat!") end
                 local X = char:FindFirstChild("HumanoidRootPart").Velocity.X
                 local Z = char:FindFirstChild("HumanoidRootPart").Velocity.Z
-                if X > 30 or X < -30 then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
-                if Z > 30 or Z < -30 then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
+                if X > maxNum or X < -maxNum then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
+                if Z > maxNum or Z < -maxNum then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
             end)
         end
     end)
