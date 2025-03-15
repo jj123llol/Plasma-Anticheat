@@ -39,7 +39,7 @@ end
 
 rs.Heartbeat:Connect(function()
     task.spawn(function()
-        for _, plr in pairs(getPlayers())
+        for _, plr in pairs(getPlayers()) do
             task.spawn(function()
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 UpdatePos(plr)
