@@ -5,7 +5,9 @@
 
     This is a SERVER script
 
-    All Executors are down, so i cant currently check if i made an error... sooo if it dosent work dont blame me!
+
+
+    This Anti Cheat Detected Speed, JumpBoost, And Tp cheats.
 ]]
 
 local maxJump = game:GetService("StarterPlayer").CharacterJumpPower + 5
