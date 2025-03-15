@@ -8,9 +8,9 @@
     All Executors are down, so i cant currently check if i made an error... sooo if it dosent work dont blame me!
 ]]
 
-local maxJump = 60
+local maxJump = game:GetService("StarterPlayer").CharacterJumpPower + 5
 
-local maxSpeed = 18
+local maxSpeed = game:GetService("StarterPlayer").CharacterWalkSpeed + 5
 
 local tpDist = 10 -- about 100 studs
 
