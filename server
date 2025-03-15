@@ -41,8 +41,8 @@ rs.Heartbeat:Connect(function()
                 UpdatePos(plr)
                 if not char:FindFirstChild("HumanoidRootPart") then continue end
                 if char:FindFirstChild("HumanoidRootPart").Velocity.Y > 20 then plr:Kick("JumpBoost Detected, Kicked By Plasma AntiCheat!") end
-                local x = char:FindFirstChild("HumanoidRootPart").Velocity.X
-                local z = char:FindFirstChild("HumanoidRootPart").Velocity.Z
+                local X = char:FindFirstChild("HumanoidRootPart").Velocity.X
+                local Z = char:FindFirstChild("HumanoidRootPart").Velocity.Z
                 if X > 20 or X < -20 then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
                 if Z > 20 or Z < -20 then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
             end)
