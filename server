@@ -45,7 +45,7 @@ rs.Heartbeat:Connect(function()
             task.spawn(function()
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 UpdatePos(plr)
-                if not char:FindFirstChild("HumanoidRootPart") then continue end
+                if not char:FindFirstChild("HumanoidRootPart") then return end
                 if char:FindFirstChild("HumanoidRootPart").Velocity.Y > maxJump then plr:Kick("JumpBoost Detected, Kicked By Plasma AntiCheat!") end
                 local X = char:FindFirstChild("HumanoidRootPart").Velocity.X
                 local Z = char:FindFirstChild("HumanoidRootPart").Velocity.Z
