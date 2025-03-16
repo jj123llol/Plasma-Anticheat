@@ -24,6 +24,10 @@ local function getPlayers()
     return playerS:GetPlayers()
 end
 
+local function Kick(plr, reason)
+    plr:Kick("Kicked By Plasma AntiCheat\nSuspected Of: "..reason)
+end
+
 local LastPositions = {}
 
 local function UpdatePos(plr)
@@ -31,7 +35,7 @@ local function UpdatePos(plr)
        local char = plr.Character or plr.CharacterAdded:Wait()
        for i, info in pairs(LastPositions) do
           if not info["User"] == plr then continue end
-          if (char:GetPivot().Position - info["CFrame"].Position).Magnitude > tpDist then plr:Kick("Teleportation Detected!") end
+          if (char:GetPivot().Position - info["CFrame"].Position).Magnitude > tpDist then Kick(plr, "Teleporting") end
           table.remove(LastPositions, i)
        end
        table.insert(LastPositions, {
@@ -48,11 +52,19 @@ rs.Heartbeat:Connect(function()
                 local char = plr.Character or plr.CharacterAdded:Wait()
                 UpdatePos(plr)
                 if not char:FindFirstChild("HumanoidRootPart") then return end
-                if char:FindFirstChild("HumanoidRootPart").Velocity.Y > maxJump then plr:Kick("JumpBoost Detected, Kicked By Plasma AntiCheat!") end
+                if char:FindFirstChild("HumanoidRootPart").Velocity.Y > maxJump then Kick(plr, "JumpBoost") end
                 local X = char:FindFirstChild("HumanoidRootPart").Velocity.X
                 local Z = char:FindFirstChild("HumanoidRootPart").Velocity.Z
-                if X > maxSpeed or X < -maxSpeed then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
-                if Z > maxSpeed or Z < -maxSpeed then plr:Kick("Speed Detected, Kicked By Plasma AntiCheat!") end
+                if X > maxSpeed or X < -maxSpeed then Kick(plr, "speed") end
+                if Z > maxSpeed or Z < -maxSpeed then Kick(plr, "speed") end
+                if char.Humanoid.FloorMaterial == Enum.Material.Air then
+                    local start = tick()
+                    local time = 0
+                    repeat task.wait()
+                        time = (tick() - start)
+                    until not char.Humanoid.FloorMaterial == Enum.Material.Air or time > 60
+                    if time > 60 then Kick(plr, "flying, or tween") then end
+                end
             end)
         end
     end)
