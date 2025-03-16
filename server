@@ -63,7 +63,7 @@ rs.Heartbeat:Connect(function()
                     repeat task.wait()
                         time = (tick() - start)
                     until not char.Humanoid.FloorMaterial == Enum.Material.Air or time > 60
-                    if time > 60 then Kick(plr, "flying, or tween") then end
+                    if time > 60 then Kick(plr, "flying, or tween") end
                 end
             end)
         end
