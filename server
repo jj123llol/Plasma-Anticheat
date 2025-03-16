@@ -7,7 +7,7 @@
 
 
 
-    This Anti Cheat Detected Speed, JumpBoost, And Tp cheats.
+    This Anti Cheat Detected Speed, JumpBoost, flight, And Tp cheats.
 ]]
 
 local maxJump = game:GetService("StarterPlayer").CharacterJumpPower + 5
